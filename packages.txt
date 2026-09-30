@@ -1,0 +1,60 @@
+# Samsung Galaxy A17 (SM-A175F) Debloat Package List
+# Safe for Knox 0x0, Play Integrity, and Swiss Banking Apps (ZKB, Raiffeisen, Swissquote, Valiant)
+
+# Telemetry & Diagnostic Tracking
+com.sec.android.diagmonagent
+com.samsung.android.knox.analytics.uploader
+com.sec.spp.push
+com.samsung.android.rubin.app
+com.samsung.android.networkdiagnostic
+com.sec.imslogger
+com.samsung.android.dqagent
+com.hiya.star
+
+# Throttling & Antivirus
+com.samsung.android.sm.devicesecurity
+
+# Ecosystem & Redundant Services
+com.snap.camerakit.plugin.v1
+com.google.ar.core
+com.samsung.storyservice
+com.samsung.android.allshare.service.mediashare
+com.samsung.android.audiomirroring
+com.samsung.android.scloud
+com.samsung.android.themestore
+com.samsung.android.dynamiclock
+com.samsung.android.wallpaper.live
+com.samsung.android.app.dressroom
+com.samsung.android.forest
+com.sec.android.app.personalization
+com.samsung.android.app.parentalcare
+com.samsung.android.app.taskedge
+com.samsung.android.app.clipboardedge
+com.mygalaxy.service
+com.samsung.android.aircommandmanager
+com.sec.android.app.billing
+com.samsung.android.mcfserver
+com.samsung.android.mcfds
+com.samsung.android.mcf.autohotspot
+com.samsung.android.smartmirroring
+com.samsung.android.app.sharelive
+com.sec.epdgtestapp
+com.samsung.gpuwatchapp
+com.sec.android.app.wlantest
+com.sec.android.app.hwmoduletest
+com.sec.android.app.sbrowser
+com.sec.android.app.samsungapps
+com.google.android.apps.bard
+
+# Unused Foreign Language Voice Engines
+com.samsung.SMT.lang_es_es_f00
+com.samsung.SMT.lang_es_mx_f00
+com.samsung.SMT.lang_es_us_f00
+com.samsung.SMT.lang_fr_fr_f00
+com.samsung.SMT.lang_hi_in_f00
+com.samsung.SMT.lang_it_it_f00
+com.samsung.SMT.lang_ko_kr_f00
+com.samsung.SMT.lang_pt_br_f00
+com.samsung.SMT.lang_ru_ru_f00
+com.samsung.SMT.lang_zh_cn_f00
+com.samsung.SMT.lang_zh_hk_f00
