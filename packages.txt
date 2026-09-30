@@ -58,3 +58,6 @@ com.samsung.SMT.lang_pt_br_f00
 com.samsung.SMT.lang_ru_ru_f00
 com.samsung.SMT.lang_zh_cn_f00
 com.samsung.SMT.lang_zh_hk_f00
+com.google.android.apps.youtube.music
+com.sec.android.app.voicenote
+com.google.android.apps.docs
