@@ -112,6 +112,12 @@ chmod +x debloat.sh
 ./debloat.sh
 ```
 
+`debloat.sh` accepts LF or Windows CRLF `packages.txt` files. It trims surrounding spaces/tabs and ignores blank lines and full-line `#` comments (including indented comments). Use one package identifier per line: each dot-separated segment starts with an ASCII letter and contains only ASCII letters, digits or underscores, independent of the caller's locale. Case, order and duplicates are preserved; inline comments are not supported. The entire list is validated before any ADB call, so malformed records abort without partially applying the list. The caller's locale is not changed for ADB.
+
+Offline regression tests: `python3 tests/test_debloat.py -v` (uses only a private ADB spy, never a device).
+
+To include the non-C-locale regression controls, set `DEBLOAT_TEST_LOCALE` to an available locale such as `de_CH.UTF-8`: `DEBLOAT_TEST_LOCALE=de_CH.UTF-8 python3 tests/test_debloat.py -v`. If the locale was generated privately with `localedef --no-archive`, also set `LOCPATH` to its parent directory. These two controls explicitly skip when no non-C locale is selected or the selected locale is unavailable; they never silently substitute the C locale.
+
 ---
 
 ## Restoring Packages
