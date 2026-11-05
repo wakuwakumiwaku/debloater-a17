@@ -116,6 +116,10 @@ chmod +x debloat.sh
 
 Offline regression tests: `python3 tests/test_debloat.py -v` (uses only a private ADB spy, never a device).
 
+`debloat.ps1` and `restore.ps1` apply the same identifier rules, whitespace/comment handling and complete-list validation before any ADB call, including device detection. Keep the shared `package-list.ps1` beside these scripts. Missing or malformed lists stop without uninstalling, restoring or changing GOS. This validates input only; it does not certify that a package is safe to remove or change command-result reporting.
+
+Native PowerShell regression controls: `python3 tests/test_powershell_packages.py -v`. Set `POWERSHELL_EXECUTABLE` to a PowerShell 7+ executable if `pwsh` is not on PATH. These controls use only a private executable ADB spy and explicitly skip if PowerShell is unavailable. They exercise PowerShell on Linux, not Windows PowerShell 5.1, batch scripts, a connected phone or Play Integrity.
+
 To include the non-C-locale regression controls, set `DEBLOAT_TEST_LOCALE` to an available locale such as `de_CH.UTF-8`: `DEBLOAT_TEST_LOCALE=de_CH.UTF-8 python3 tests/test_debloat.py -v`. If the locale was generated privately with `localedef --no-archive`, also set `LOCPATH` to its parent directory. These two controls explicitly skip when no non-C locale is selected or the selected locale is unavailable; they never silently substitute the C locale.
 
 ---

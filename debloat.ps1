@@ -6,19 +6,21 @@ Write-Host "   Samsung Galaxy A17 (SM-A175F) Debloater Toolkit" -ForegroundColor
 Write-Host "   Knox 0x0 Compliant | Banking App Safe" -ForegroundColor Cyan
 Write-Host "=========================================================`n" -ForegroundColor Cyan
 
+. (Join-Path $PSScriptRoot "package-list.ps1")
+$packagesFile = Join-Path $PSScriptRoot "packages.txt"
+try {
+    $packages = @(Get-ValidatedPackages -Path $packagesFile)
+} catch {
+    Write-Host "[ERROR] $($_.Exception.Message)" -ForegroundColor Red
+    exit 1
+}
+
 $device = adb get-state 2>$null
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[ERROR] No ADB device detected! Check USB debugging." -ForegroundColor Red
     exit 1
 }
 
-$packagesFile = Join-Path $PSScriptRoot "packages.txt"
-if (-not (Test-Path $packagesFile)) {
-    Write-Host "[ERROR] packages.txt not found!" -ForegroundColor Red
-    exit 1
-}
-
-$packages = Get-Content $packagesFile | Where-Object { $_ -and -not $_.StartsWith("#") }
 $total = $packages.Count
 $count = 0
 $success = 0

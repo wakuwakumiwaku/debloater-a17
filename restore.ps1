@@ -4,8 +4,14 @@ Write-Host "=========================================================" -Foregrou
 Write-Host "   Samsung Galaxy A17 (SM-A175F) Package Restorer" -ForegroundColor Cyan
 Write-Host "=========================================================`n" -ForegroundColor Cyan
 
+. (Join-Path $PSScriptRoot "package-list.ps1")
 $packagesFile = Join-Path $PSScriptRoot "packages.txt"
-$packages = Get-Content $packagesFile | Where-Object { $_ -and -not $_.StartsWith("#") }
+try {
+    $packages = @(Get-ValidatedPackages -Path $packagesFile)
+} catch {
+    Write-Host "[ERROR] $($_.Exception.Message)" -ForegroundColor Red
+    exit 1
+}
 
 foreach ($pkg in $packages) {
     Write-Host "[*] Restoring $pkg..." -NoNewline
