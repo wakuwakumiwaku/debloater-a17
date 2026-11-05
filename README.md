@@ -130,6 +130,8 @@ If you ever wish to restore all uninstalled packages back to their factory state
 ```powershell
 .\restore.ps1
 ```
+`restore.ps1` checks each native ADB exit code, including the final GOS enable. Failed operations print `[FAILED]`; remaining operations are still attempted, but an incomplete restore prints `[ERROR]` and exits nonzero rather than claiming that all packages were restored. All-success runs keep the existing `[DONE]` message. This reports command results, not a device-state verification.
+
 Or for individual packages:
 ```bash
 adb shell cmd package install-existing <package_name>
