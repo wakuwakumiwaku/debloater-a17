@@ -136,6 +136,18 @@ Offline controls: `python3 tests/test_gos_failure.py -v`. They use a private
 executable ADB spy. PowerShell controls explicitly skip when PowerShell 7+ is
 unavailable; set `POWERSHELL_EXECUTABLE` to select its path.
 
+## PowerShell optimizer results
+
+`optimize.ps1` checks each native ADB result and stops at the first failed
+optimization. It names the failed command, prints `[ERROR]` and exits nonzero
+instead of claiming that every optimization succeeded. Earlier successful
+commands are not rolled back. Command success does not verify device state or
+whether a setting is supported by a particular firmware.
+
+Offline optimizer controls: `python3 tests/test_optimizer_failures.py -v`.
+They use an owned executable ADB spy, never a phone, and require PowerShell 7+
+(`POWERSHELL_EXECUTABLE` may select its path).
+
 ## Restoring Packages
 
 If you ever wish to restore all uninstalled packages back to their factory state:
