@@ -52,7 +52,13 @@ for pkg in "${packages[@]}"; do
 done
 
 echo -n "[*] Restricting Game Optimizing Service (GOS)... "
-adb shell pm disable-user --user 0 com.samsung.android.game.gos >/dev/null 2>&1 && echo "[OK]" || echo "[SKIPPED]"
+if adb shell pm disable-user --user 0 com.samsung.android.game.gos >/dev/null 2>&1; then
+    echo "[OK]"
+else
+    echo "[FAILED]"
+    echo "[ERROR] GOS restriction failed; debloat is incomplete." >&2
+    exit 1
+fi
 
 echo
 echo "========================================================="

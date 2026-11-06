@@ -124,6 +124,18 @@ To include the non-C-locale regression controls, set `DEBLOAT_TEST_LOCALE` to an
 
 ---
 
+## GOS restriction results
+
+`debloat.sh` and `debloat.ps1` check the native exit status of the final GOS
+restriction. A failure prints `[ERROR]` and exits nonzero without a `[DONE]`
+summary; already processed packages are not rolled back. Existing best-effort
+uninstall/absent-package behavior is unchanged. This reports the command result,
+not a verification of the phone's state. Batch scripts are unchanged.
+
+Offline controls: `python3 tests/test_gos_failure.py -v`. They use a private
+executable ADB spy. PowerShell controls explicitly skip when PowerShell 7+ is
+unavailable; set `POWERSHELL_EXECUTABLE` to select its path.
+
 ## Restoring Packages
 
 If you ever wish to restore all uninstalled packages back to their factory state:

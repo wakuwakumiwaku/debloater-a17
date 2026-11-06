@@ -39,6 +39,11 @@ foreach ($pkg in $packages) {
 
 Write-Host "`n[*] Restricting Game Optimizing Service (GOS)..." -NoNewline
 adb shell pm disable-user --user 0 com.samsung.android.game.gos 2>&1 | Out-Null
+if ($LASTEXITCODE -ne 0) {
+    Write-Host " [FAILED]" -ForegroundColor Red
+    Write-Host "[ERROR] GOS restriction failed; debloat is incomplete." -ForegroundColor Red
+    exit 1
+}
 Write-Host " [OK]" -ForegroundColor Green
 
 Write-Host "`n=========================================================" -ForegroundColor Cyan
